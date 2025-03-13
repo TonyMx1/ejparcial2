@@ -1,0 +1,62 @@
+<div style="margin: 20px;">
+  <h1>Productos</h1>
+  
+  <!-- Contenedor principal usando grid de Bootstrap -->
+  <div class="row">
+    <!-- Sección izquierda (Listado) -->
+    <div class="col-md-8">
+      <h4>Listado de PRODUCTOS</h4>
+      <table class="table table-striped">
+        <thead class="table-dark">
+          <tr>
+            <th>Descripcion</th>
+            <th>Precio</th>
+            <th>Acciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          @for (producto of productos; track producto.id) {
+          <tr>
+            <td>{{ producto.descripcion }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>
+              <button type="button" class="btn btn-success btn-sm"
+                (click)="selectProducto(producto)">Seleccionar</button>
+            </td>
+          </tr>
+          }
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Sección derecha (Formulario) -->
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Gestión de Productos</h5>
+          
+          <div class="mb-3">
+            <label class="form-label">Descripción:</label>
+            <input type="text" class="form-control" 
+                   [(ngModel)]="producto.descripcion">
+          </div>
+          
+          <div class="mb-3">
+            <label class="form-label">Precio:</label>
+            <input type="number" class="form-control" 
+                   [(ngModel)]="producto.precio">
+          </div>
+
+          <div class="d-grid gap-2">
+            <button type="button" class="btn btn-primary"
+              (click)="insertarProducto()">Insertar</button>
+            <button type="button" class="btn btn-warning"
+              (click)="updateProducto()">Modificar</button>
+            <button type="button" class="btn btn-danger"
+              (click)="deleteProducto()">Eliminar</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

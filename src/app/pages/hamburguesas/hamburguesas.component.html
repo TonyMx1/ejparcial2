@@ -1,0 +1,56 @@
+<div style="margin: 20px;">
+    <h1>Hamburguesas Don Cangrejo 🦀</h1>
+
+    <h4>Alta de ordenes de hamburguesas</h4>
+
+    <div class="col-sm-4">
+        <p>
+            <label>Descripcion:</label>
+            <input type="text" class="form-control"
+            [(ngModel)]="hamburguesa.descripcion" />
+        </p>
+        <p>
+            <label>Precio:</label>
+            <input type="text" class="form-control"
+            [(ngModel)]="hamburguesa.precio" />
+        </p>
+        <table>
+            <tr>
+                <td>
+                    <button type="button" class="btn btn-primary"
+                        (click)="this.insertarHamburguesa()">Insertar</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-warning"
+                        (click)="this.updateHamburguesa()">Modificar</button>
+                </td>
+                <td>
+                    <button type="button" class="btn btn-primary"
+                        (click)="this.deleteHamburguesa()">Eliminar</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <hr />
+    <p></p>
+    <h4>Listado de Hamburguesas</h4>
+
+    <table class="table">
+        <thead>
+            <th>Descripcion</th>
+            <th>Precio</th>
+        </thead>
+        <tbody>
+            @for (hamburguesa of hamburguesas; track hamburguesa.id) {
+                <tr>
+                    <td>{{ hamburguesa.descripcion }}</td>
+                    <td>{{ hamburguesa.precio }}</td>
+                    <td>
+                        <button type="button" class="btn btn-success"
+                            (click)="selectHamburguesa(hamburguesa)">Seleccionar</button>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>

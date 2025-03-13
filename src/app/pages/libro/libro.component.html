@@ -1,0 +1,78 @@
+<div style="margin: 20px;">
+    <h1>Catálogo de Libros</h1>
+    
+    <!-- Contenedor principal usando grid de Bootstrap -->
+    <div class="row">
+      <!-- Sección izquierda (Listado) -->
+      <div class="col-md-8">
+        <h4>Listado de Libros</h4>
+        <table class="table table-striped">
+          <thead class="table-dark">
+            <tr>
+              <th>Título</th>
+              <th>Autor</th>
+              <th>Editorial</th>
+              <th>Año Publicación</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody>
+            @for (libro of libros; track libro.id) {
+            <tr>
+              <td>{{ libro.titulo }}</td>
+              <td>{{ libro.autor }}</td>
+              <td>{{ libro.editorial }}</td>
+              <td>{{ libro.anioPublicacion }}</td>
+              <td>
+                <button type="button" class="btn btn-success btn-sm"
+                  (click)="selectLibro(libro)">Seleccionar</button>
+              </td>
+            </tr>
+            }
+          </tbody>
+        </table>
+      </div>
+  
+      <!-- Sección derecha (Formulario) -->
+      <div class="col-md-4">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Gestión de Libros</h5>
+            
+            <div class="mb-3">
+              <label class="form-label">Título:</label>
+              <input type="text" class="form-control" 
+                     [(ngModel)]="libro.titulo">
+            </div>
+            
+            <div class="mb-3">
+              <label class="form-label">Autor:</label>
+              <input type="text" class="form-control" 
+                     [(ngModel)]="libro.autor">
+            </div>
+  
+            <div class="mb-3">
+              <label class="form-label">Editorial:</label>
+              <input type="text" class="form-control" 
+                     [(ngModel)]="libro.editorial">
+            </div>
+  
+            <div class="mb-3">
+              <label class="form-label">Año Publicación:</label>
+              <input type="number" class="form-control" 
+                     [(ngModel)]="libro.anioPublicacion">
+            </div>
+  
+            <div class="d-grid gap-2">
+              <button type="button" class="btn btn-primary"
+                (click)="insertarLibro()">Insertar</button>
+              <button type="button" class="btn btn-warning"
+                (click)="updateLibro()">Modificar</button>
+              <button type="button" class="btn btn-danger"
+                (click)="deleteLibro()">Eliminar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>

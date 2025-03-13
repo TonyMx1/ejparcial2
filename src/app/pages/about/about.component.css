@@ -1,0 +1,9 @@
+/* profile.component.css */
+.min-vh-100 {
+    min-height: 100vh;
+  }
+  
+  .card {
+    border: none;
+    border-radius: 15px;
+  }
